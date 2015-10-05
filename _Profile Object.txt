@@ -1,0 +1,203 @@
+----------    _Profile object    -----------
+--------------------------------------------
+
+A new _Profile object can be created with the 
+following syntax: 
+
+p = new _Profile(pID) 
+
+The declaration will create a new _Profile 
+object, associated with the person whose 
+pID was passed.
+
+_Profile.asp is used in conjunction with
+showProfile.asp, and is used as the backend
+in which showProfile pulls the profile data. 
+showProfile provides the front end to display
+profile data.  
+
+In the _Profile object, we have a multitude of 
+data values that can be returned to showProfile.asp
+This includes: 
+
+pid - This Returns the pID of the user
+
+mid - This returns a member ID. If it does not exist, 
+a '0' is returned. 
+
+name - Returns the display name of the user. If 
+this does not exist, a combination of the first and last 
+name is returned
+
+name_rip -(unsure)
+
+fullname - This returns a combination of the first, 
+middle, and last name
+
+firstname - Returns the first name
+
+namex - Returns a combination of name and the province 
+of origin for the user
+
+nickname - Returns a created nickname based on either 
+the display name or the first name
+
+maidenname - Returns a maiden name, if it exists
+
+statusNo - Returns membership status number
+
+status - Returns description of status number
+
+CBstatus - Specific to Common Bonds
+
+HNMStatus - (Unsure)
+
+spouse - If the spouse of the user exists in the 
+database, the name is returned
+
+relationships - Returns people in the the database 
+that the user has family relations with.
+
+province - If it exists, returns the province of 
+origin
+
+vowyear - (CB) Returns the year in which the vow 
+was made
+
+leftsm - ?? (CB) The year in which the user left 
+the religion in question ?? (unsure)
+
+email - returns a collection of email addresses 
+from the user
+
+email1 - specifically returns the primary email 
+address
+
+CYaddress - (CY) Returns the full address of the 
+Cypress member
+
+address - Returns the full address of the user
+
+unit - (CY) Returns the unit of the Cypress 
+resident
+
+unitcompanion - (CY) If a unit companion exists 
+in the database, their pID is returned
+
+telephone - returns a collection of telephone 
+numbers associated with the user
+
+telephone1 - specifically returns the primary 
+telephone number associated with the user
+
+cell - specifically returns the cell phone 
+number associated with the user
+
+mdob - returns the month and day of birth
+
+mpdob - returns the month, day, and place 
+of birth
+
+dob - returns the date of birth
+
+birth - returns the date and place of birth
+
+ageondate - returns the current age of the 
+user, based on today's date
+
+dod - if the user's death has been registered, 
+returns the date of death
+
+death - returns the date and place of death
+
+gender - returns the gender of the user
+
+lifedates - returns the birth date and death 
+date of the user
+
+bionotes - returns biographical notes of the 
+user
+
+groups - returns a collection of groups 
+that the user is currently a member of 
+
+directoryblock - returns a table with basic 
+user information 
+
+cbstatus - (CB) returns the status code of the 
+common bonds user 
+
+distribution - (CB) (unsure)
+
+reunion15 - (CB) returns a status of whether 
+the user is attending the 2015 reunion
+
+cbstatuscode - (CB) returns that status code of
+the cb user
+
+
+
+--------- _Profile Forms and Actions ----------
+
+
+-- Functions -- 
+
+_ProfileForms(profile, field, id) - This function 
+is used as an ajax response in updateable profiles. 
+A field is passed for a particular profile, and a 
+form is returned that allows the particular field 
+to be updated. Valid field options include:
+
+address, telephone, province, vowyear, leftsm, dob, 
+mdob, birth, mpdob, dod, death, email, distribution, 
+reunion15, bionotes, Administrative, relationships, 
+death registration
+
+clean(rs, field) - (unsure)
+
+formLine(field, label, val, type) - This function 
+returns a table row with a basic form input. The 
+label is displayed in front of the input. The field 
+parameter is the field name. Valid type options 
+include: 
+
+month and day dropdown (mmdd), yes or no checkbox 
+(y_n), required text field (required)
+
+
+_processProfileForm(form) - This function is called 
+to process an updateable profile form that has been 
+submitted. This function makes all the necessary 
+database insertions
+
+_AdminForms - This function creates administrative 
+forms for updateable profiles. This function also 
+handles form processing after the form is submitted. 
+Administrative form options include: 
+
+registerDeathForm, vacateUnitForm, manageNamesForm, 
+addCBmemberForm, and changeMemberStatusForm
+
+_stripVowYear(x) - This function strips x number of 
+digits off the end of the name display name string, 
+essentially stripping the proceeding vow year.
+
+_ancestorTreeTxt(pID) - If the ancestry exists in the 
+database, a text version of the ancestry is returned.
+
+_setPrimaryEmail(pID, email, comment) - sets the 
+primary email address of the user passed to the 
+email passed into the function 
+
+_MissingPersonNotes(pID) - (unsure)
+
+_addRelation(pID, relation, pID2) - a function that 
+establishes a relation from the user of pID to the 
+user of pID2
+
+_phoneFormat(n) - A simple function that formats a 
+phone number that is passed into the appropriate 
+format for the database
+
+
+
